@@ -10,7 +10,7 @@
 -- Autosave
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
   callback = function()
-    if vim.bo.modified then
+    if vim.bo.modified and vim.api.nvim_buf_get_name(0) ~= "" then
       vim.cmd("silent write")
     end
   end,
